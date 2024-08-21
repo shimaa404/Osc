@@ -31,4 +31,4 @@ wc -l summary.txt | tee -a  summary.txt
 wc -w reports/report1.md
 wc -c logs/system.log | tee -a  summary.txt 
 find project_files/ -type f -or -type d | wc -l | tee -a project_files/summary.txt 
-shosho@ubuntu1:~$ cat project_files/summary.txt
+cat project_files/summary.txt
