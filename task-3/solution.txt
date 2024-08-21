@@ -1,0 +1,34 @@
+mkdir project_files
+cd project_files
+mkdir reports logs data
+cd reports/
+touch report1.mp report2.mp
+cd ~/project_files/logs/
+touch system.log error.log file1.pdf file2.pdf
+cd ~/project_files/data/
+touch data.csv info.txt
+nano ~/project_files/reports/report1.mp 
+nano ~/project_files/logs/system.log 
+nano ~/project_files/data/info.txt 
+cd ~
+tar -cf logs_backup.tar ~/project_files/logs/
+mv logs_backup.tar project_files/
+tar -xvf project_files/logs_backup.tar -C project_files/logs/ home/shosho/project_files/logs/
+find ~ -name "*.md"
+find project_files/ -name "*.log"
+find project_files/ -name "file1.txt"
+find project_files/ -iname "*.pdf"
+find project_files/logs/ -type f
+cd project_files/ 
+ln -s data/data.csv link_data.csv
+nano link_data.csv 
+cat data/data.csv
+unlink link_data.csv 
+touch summary.txt 
+echo "Summary Start" > summary.txt 
+echo "$(date)" >> summary.txt
+wc -l summary.txt | tee -a  summary.txt 
+wc -w reports/report1.md
+wc -c logs/system.log | tee -a  summary.txt 
+find project_files/ -type f -or -type d | wc -l | tee -a project_files/summary.txt 
+shosho@ubuntu1:~$ cat project_files/summary.txt
